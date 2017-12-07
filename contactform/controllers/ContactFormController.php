@@ -130,6 +130,18 @@ class ContactFormController extends BaseController
 			$message->htmlMessage = StringHelper::parseMarkdown($htmlMessage);
 		}
 
+		// If message body template is defined, render it
+		if (craft()->templates->doesTemplateExist('contactform/message'))
+		{
+			$message->message = \trim(craft()->templates->render('contactform/message', $message->attributes)) ?: $message->message;	
+		}
+
+		// If html message body template is defined, render it
+		if (craft()->templates->doesTemplateExist('contactform/htmlMessage'))
+		{
+			$message->htmlMessage = \trim(craft()->templates->render('contactform/htmlMessage', $message->attributes)) ?: $message->htmlMessage;	
+		}
+		
 		// Validate!
 		$message->validate();
 
