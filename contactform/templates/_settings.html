@@ -75,3 +75,13 @@
 	warning:      (craft.config.get('successFlashMessage', 'contactform') is not sameas(null)) ? configWarning('successFlashMessage'),
 	errors:       settings.getErrors('successFlashMessage')
 }) }}
+
+{{ forms.lightswitchField({
+	label:        "Send only plaintext emails?"|t,
+	id:           'plaintextOnly',
+	name:         'plaintextOnly',
+	on:           settings.plaintextOnly,
+	disabled:     (craft.config.get('plaintextOnly', 'contactform') is not sameas(null)),
+	warning:      (craft.config.get('plaintextOnly', 'contactform') is not sameas(null)) ? configWarning('plaintextOnly'),
+	errors:       settings.getErrors('plaintextOnly')
+}) }}

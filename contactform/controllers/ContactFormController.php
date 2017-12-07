@@ -57,7 +57,7 @@ class ContactFormController extends BaseController
 		{
 			$message->message = $event->message;
 
-			if (!empty($event->htmlMessage))
+			if (!$settings->plaintextOnly && !empty($event->htmlMessage))
 			{
 				$message->htmlMessage = $event->htmlMessage;
 			}
@@ -124,7 +124,7 @@ class ContactFormController extends BaseController
 			}
 		}
 
-		if (empty($message->htmlMessage))
+		if (!$settings->plaintextOnly && empty($message->htmlMessage))
 		{
 			$htmlMessage = HtmlHelper::encode($message->message);
 			$message->htmlMessage = StringHelper::parseMarkdown($htmlMessage);

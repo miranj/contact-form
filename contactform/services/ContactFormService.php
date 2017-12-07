@@ -42,7 +42,7 @@ class ContactFormService extends BaseApplicationComponent
 			$variables['emailSubject'] = $settings->prependSubject . ($settings->prependSubject && $message->subject ? ' - ' : '') . $message->subject;
 			$variables['emailBody'] = $message->message;
 
-			if (!empty($message->htmlMessage))
+			if (!$settings->plaintextOnly && !empty($message->htmlMessage))
 			{
 				// Prevent Twig tags from getting parsed
 				$email->htmlBody = str_replace(array('{%', '{{', '}}', '%}'), array('&lbrace;%', '&lbrace;&lbrace;', '&rbrace;&rbrace;', '%&rbrace;'), $message->htmlMessage);
@@ -59,7 +59,12 @@ class ContactFormService extends BaseApplicationComponent
 				}
 			}
 
-			craft()->email->sendEmail($email, $variables);
+			if ($settings->plaintextOnly) {
+				craft()->contactForm_plaintextEmail->sendEmail($email, $variables);				
+			}
+			else {
+				craft()->email->sendEmail($email, $variables);
+			}
 		}
 	}
 

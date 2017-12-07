@@ -133,6 +133,7 @@ return array(
     'allowAttachments'    => false,
     'honeypotField'       => 'dieSpammers',
     'successFlashMessage' => 'Congrats, yo!'
+    'plaintextOnly'       => false,
 );
 ```
 
