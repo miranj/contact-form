@@ -48,6 +48,20 @@ class ContactFormService extends BaseApplicationComponent
 				$email->htmlBody = str_replace(array('{%', '{{', '}}', '%}'), array('&lbrace;%', '&lbrace;&lbrace;', '&rbrace;&rbrace;', '%&rbrace;'), $message->htmlMessage);
 			}
 
+			if ($settings->ccEmail)
+			{
+				$email->cc = array(
+	    			array('email' => $settings->ccEmail, 'name' => $settings->ccName)
+				);
+			}
+
+			if ($settings->bccEmail)
+			{
+				$email->bcc = array(
+	    			array('email' => $settings->bccEmail, 'name' => $settings->bccName)
+				);
+			}
+
 			if (!empty($message->attachment))
 			{
 				foreach ($message->attachment as $attachment)
@@ -59,10 +73,12 @@ class ContactFormService extends BaseApplicationComponent
 				}
 			}
 
-			if ($settings->plaintextOnly) {
+			if ($settings->plaintextOnly)
+			{
 				craft()->contactForm_plaintextEmail->sendEmail($email, $variables);				
 			}
-			else {
+			else 
+			{
 				craft()->email->sendEmail($email, $variables);
 			}
 		}

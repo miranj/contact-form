@@ -114,6 +114,10 @@ class ContactFormPlugin extends BasePlugin
 			'honeypotField'         => AttributeType::String,
 			'successFlashMessage'   => array(AttributeType::String, 'default' => Craft::t('Your message has been sent.'), 'required' => true),
 			'plaintextOnly'      	=> AttributeType::Bool,
+			'ccEmail'               => AttributeType::String,
+			'ccName'                => AttributeType::String,
+			'bccEmail'              => AttributeType::String,
+			'bccName'               => AttributeType::String,
 		);
 	}
 }

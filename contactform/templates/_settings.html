@@ -85,3 +85,48 @@
 	warning:      (craft.config.get('plaintextOnly', 'contactform') is not sameas(null)) ? configWarning('plaintextOnly'),
 	errors:       settings.getErrors('plaintextOnly')
 }) }}
+
+{{ forms.textField({
+	label:        "CC Email"|t,
+	id:           'ccEmail',
+	name:         'ccEmail',
+	instructions: "The email address that the contact form will be cc-ed to."|t,
+	value:        settings.ccEmail,
+	disabled:     (craft.config.get('ccEmail', 'contactform') is not sameas(null)),
+	warning:      (craft.config.get('ccEmail', 'contactform') is not sameas(null)) ? configWarning('ccEmail'),
+	errors:       settings.getErrors('ccEmail')
+}) }}
+
+{{ forms.textField({
+	label:        "CC Name"|t,
+	id:           'ccName',
+	name:         'ccName',
+	instructions: "Name of cc-ed receipeint."|t,
+	value:        settings.ccEmail,
+	disabled:     (craft.config.get('ccName', 'contactform') is not sameas(null)),
+	warning:      (craft.config.get('ccName', 'contactform') is not sameas(null)) ? configWarning('ccName'),
+	errors:       settings.getErrors('ccName')
+}) }}
+
+{{ forms.textField({
+	label:        "BCC Email"|t,
+	id:           'bccEmail',
+	name:         'bccEmail',
+	instructions: "The email address that the contact form will be bcc-ed to."|t,
+	value:        settings.bccEmail,
+	disabled:     (craft.config.get('bccEmail', 'contactform') is not sameas(null)),
+	warning:      (craft.config.get('bccEmail', 'contactform') is not sameas(null)) ? configWarning('bccEmail'),
+	errors:       settings.getErrors('bccEmail')
+}) }}
+
+{{ forms.textField({
+	label:        "BCC Name"|t,
+	id:           'bccName',
+	name:         'bccName',
+	instructions: "Name of bcc-ed receipeint."|t,
+	value:        settings.ccEmail,
+	disabled:     (craft.config.get('bccName', 'contactform') is not sameas(null)),
+	warning:      (craft.config.get('bccName', 'contactform') is not sameas(null)) ? configWarning('bccName'),
+	errors:       settings.getErrors('bccName')
+}) }}
+
