@@ -110,6 +110,7 @@ class ContactFormPlugin extends BasePlugin
 			'toEmail'               => array(AttributeType::String, 'required' => true),
 			'prependSender'         => array(AttributeType::String, 'default' => Craft::t('On behalf of')),
 			'prependSubject'        => array(AttributeType::String, 'default' => Craft::t('New message from {siteName}', array('siteName' => craft()->getSiteName()))),
+			'setReplyTo'         	=> array(AttributeType::Bool, 'default' => true),
 			'allowAttachments'      => AttributeType::Bool,
 			'honeypotField'         => AttributeType::String,
 			'successFlashMessage'   => array(AttributeType::String, 'default' => Craft::t('Your message has been sent.'), 'required' => true),

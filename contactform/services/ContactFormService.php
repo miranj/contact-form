@@ -32,7 +32,12 @@ class ContactFormService extends BaseApplicationComponent
 			$emailSettings = craft()->email->getSettings();
 
 			$email->fromEmail = $emailSettings['emailAddress'];
-			$email->replyTo   = $message->fromEmail;
+
+			if ($settings->setReplyTo)
+			{
+				$email->replyTo   = $message->fromEmail;
+			}
+
 			$email->sender    = $emailSettings['emailAddress'];
 			$email->fromName  = $settings->prependSender . ($settings->prependSender && $message->fromName ? ' ' : '') . $message->fromName;
 			$email->toEmail   = $toEmail;

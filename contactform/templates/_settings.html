@@ -45,6 +45,17 @@
 }) }}
 
 {{ forms.lightswitchField({
+	label:        "Set Reply-To header?"|t,
+	id:           'setReplyTo',
+	name:         'setReplyTo',
+	instructions: "When turned on From Email will be attached as Reply-To header in the outgoing emails."|t,
+	on:           settings.setReplyTo,
+	disabled:     (craft.config.get('setReplyTo', 'contactform') is not sameas(null)),
+	warning:      (craft.config.get('setReplyTo', 'contactform') is not sameas(null)) ? configWarning('setReplyTo'),
+	errors:       settings.getErrors('setReplyTo')
+}) }}
+
+{{ forms.lightswitchField({
 	label:        "Allow attachments?"|t,
 	id:           'allowAttachments',
 	name:         'allowAttachments',
